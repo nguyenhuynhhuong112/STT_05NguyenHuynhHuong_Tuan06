@@ -1,7 +1,7 @@
 import { FlatList, Image, Text, View } from "react-native";
 import { itemData } from "./itemData";
 
-export const Layout = () => {
+export const LayoutScreen02 = () => {
     const renderGridItem = ({ item }) => (
         <View style={{width:180, height:190, paddingLeft:5 }}>
             <Image source={item.imageURL} style={{ width: 155, height: 90, }} />
@@ -15,7 +15,7 @@ export const Layout = () => {
     );
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1,justifyContent:'center', alignItems:'center', paddingTop:15 }}>
             <FlatList
                 data={itemData}
                 keyExtractor={(item) => item.id}
