@@ -2,7 +2,7 @@ import { Button, Text } from "react-native";
 import { View } from "react-native";
 import { style } from "./screen01/style";
 
-export const Home = ({ navigation }) => {
+export const Home = ({  navigation }:{navigation:any}) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
