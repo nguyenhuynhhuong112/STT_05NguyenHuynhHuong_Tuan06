@@ -5,10 +5,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Feather from "react-native-vector-icons/Feather";
+import Foundation from "react-native-vector-icons/Foundation";
 import { TextInput, View, TouchableOpacity } from "react-native";
-import { Home } from "./src/component/lab4/Home";
-import { Layout } from "./src/component/lab4/screen01/Layout";
 import { LayoutScreen02 } from "./src/component/lab4/screen02/LayoutScreen02";
+import { Layout } from "./src/component/lab4/screen01/Layout";
+import { Home } from "./src/component/lab4/Home";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -85,20 +86,51 @@ function MainScreen() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor:'rgba(27, 169, 255, 1)'
+        tabBarStyle: { backgroundColor: "rgba(27, 169, 255, 1)" },
       })}
-      
     >
-      <Tab.Screen name="Home" component={Home} options={{ title: "Home" }} />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: "Home",
+          tabBarLabel: "",
+          tabBarIcon: () => (
+            <Foundation name="list" size={30} style={{ color: "white" }} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Layout"
         component={LayoutNavigator}
-        options={{ title: "Layout" }}
+        initialParams={{ navigation: null }}
+        options={({ navigation }) => ({
+          tabBarIcon: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+              <AntDesign name="home" size={30} style={{ color: "white" }} />
+            </TouchableOpacity>
+          ),
+          tabBarLabel: "",
+        })}
       />
       <Tab.Screen
         name="LayoutScreen02"
         component={LayoutScreen02Navigator}
-        options={{ title: "LayoutScreen02" }}
+        initialParams={{ navigation: null }}
+        options={({ navigation }) => ({
+          tabBarIcon: () => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Home")}
+            >
+              <AntDesign
+                name="arrowleft"
+                size={30}
+                style={{ color: "white" }}
+              />
+            </TouchableOpacity>
+          ),
+          tabBarLabel: "",
+        })}
       />
     </Tab.Navigator>
   );
@@ -120,7 +152,7 @@ function LayoutNavigator({ navigation }: { navigation: any }) {
           headerTintColor: "rgba(255, 255, 255, 1)",
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-              <AntDesign name="back" size={24} color="white" />
+              <AntDesign name="arrowleft" size={24} color="white" />
             </TouchableOpacity>
           ),
         }}
@@ -146,7 +178,7 @@ function LayoutScreen02Navigator({ navigation }: { navigation: any }) {
           headerTintColor: "rgba(255, 255, 255, 1)",
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-              <AntDesign name="back" size={24} color="white" />
+              <AntDesign name="arrowleft" size={24} color="white" />
             </TouchableOpacity>
           ),
         }}
