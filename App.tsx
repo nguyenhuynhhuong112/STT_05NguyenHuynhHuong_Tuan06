@@ -84,7 +84,7 @@ export default function App() {
 function MainScreen() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
+      screenOptions={() => ({
         headerShown: false,
         tabBarStyle: { backgroundColor: "rgba(27, 169, 255, 1)" },
       })}
